@@ -1,0 +1,36 @@
+client_id1: client1
+client_id2: client2
+client_id3: client3
+client_id4: client4
+path: "isic2019"
+json_path: "FL_divide_4clients.json"
+
+num_rounds: 10
+num_clients: 4 
+batch_size: 32 
+num_classes: 8 
+num_clients_per_round_fit: 4 
+num_clients_per_round_eval: 4 
+
+clip_C_S_client1: 6.2
+clip_C_S_client2: 6.2
+clip_C_S_client3: 6.2
+clip_C_S_client4: 6.2
+
+clip_C_T_client1: 15.9
+clip_C_T_client2: 15.9
+clip_C_T_client3: 15.9
+clip_C_T_client4: 15.9
+
+model_arch: cnn5
+calibrate: False
+use_shrinkage: False
+noise_z_S: 0.88
+noise_z_T: 0.88
+lambda_kd: 0.5
+beta: 0.6
+
+config_fit: # a config that each client will receive (this is send by the server) when they are sampled. This allows you to dynamically configure the training on the client side as the simulation progresses
+  lr: 0.0003 # learning rate to use by the clients
+  #weight_decay: 0.0005 # momentum used by SGD optimiser on the client side
+  local_epochs: 3 # number of training epochs each clients does in a fit() round
